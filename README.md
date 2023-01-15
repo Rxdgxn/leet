@@ -1,1 +1,1 @@
-## Random [LeetCode](https://leetcode.com/problemset/all/) problems that I've solved
+Random [LeetCode](https://leetcode.com/problemset/all/) problems that I've solved.
