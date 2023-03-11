@@ -1,1 +1,1 @@
-Random [LeetCode](https://leetcode.com/problemset/all/) problems that I've solved.
+Random [LeetCode](https://leetcode.com/problemset/all/) and [HackerRank](https://www.hackerrank.com/dashboard) problems that I've solved.
