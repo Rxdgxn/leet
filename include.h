@@ -8,3 +8,11 @@
 #include <sstream>
 #include <unordered_map>
 using namespace std;
+
+#define sort_v(v) sort((v).begin(), (v).end())
+
+template <typename T>
+void vout(vector<T> v, string del) {
+    for (T val : v) cout << val << del;
+    cout << "\n";
+}
