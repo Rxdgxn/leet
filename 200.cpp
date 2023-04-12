@@ -30,7 +30,7 @@ public:
 
         for (int i = 0; i < grid.size(); i++) {
             for (int j = 0; j < grid[0].size(); j++) {
-                isl += dfs(grid, i, j);
+                if (!a[i][j]) isl += dfs(grid, i, j);
             }
         }
 
