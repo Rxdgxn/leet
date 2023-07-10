@@ -3,7 +3,7 @@
 class LUPrefix {
 public:
 
-    int mp[1001] = {0}, len, pre = 0;
+    int mp[100001] = {0}, len, pre = 0;
 
     LUPrefix(int n) {
         len = n;
