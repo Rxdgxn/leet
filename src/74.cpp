@@ -4,6 +4,7 @@ class Solution {
 public:
     bool searchMatrix(const vector<vector<int>>& matrix, int target) {
         // Or could've just constructed a vector<int>
+        const int sz = matrix[0].size() - 1;
         int lm = 0, rm = matrix.size() - 1;
 
         while (lm <= rm) {
@@ -12,8 +13,8 @@ public:
                 rm = mm - 1;
             }
             else if (matrix[mm][0] < target) {
-                if (matrix[mm][matrix[0].size() - 1] > target) {
-                    int l = 0, r = matrix[0].size() - 1;
+                if (matrix[mm][sz] > target) {
+                    int l = 0, r = sz;
                     while (l <= r) {
                         const int m = (l + r) / 2;
                         if (matrix[mm][m] < target) {
@@ -26,7 +27,7 @@ public:
                     }
                     rm = mm - 1;
                 }
-                else if (matrix[mm][matrix[0].size() - 1] < target) {
+                else if (matrix[mm][sz] < target) {
                     lm = mm + 1;
                 }
                 else return true;
