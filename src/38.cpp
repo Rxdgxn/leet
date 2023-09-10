@@ -27,7 +27,6 @@ public:
 
     string countAndSay(int n) {
         if (n == 1) return "1";
-        if (n == 2) return "11";
-        return func(3, n, "11");
+        return func(2, n, "1");
     }
 };
