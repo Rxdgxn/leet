@@ -35,7 +35,7 @@ public:
             ok = 1;
         }
 
-        for (int k = 0; k < off; k++) other.inner.insert(other.inner.begin(), 0);
+        for (int k = 0; k < off; k++) other.inner.emplace(other.inner.begin(), 0);
 
         auto sum = vector<short>(50001, -69);
 
@@ -50,7 +50,7 @@ public:
             else r = 0;
         }
 
-        if (r) sum.insert(sum.begin(), r);
+        if (r) sum.emplace(sum.begin(), r);
 
         auto ret = BigNum(0);
         ret.inner = sum;
@@ -89,12 +89,12 @@ public:
                 else r = 0;
             }
 
-            if (r) tmp.insert(tmp.begin(), r);
+            if (r) tmp.emplace(tmp.begin(), r);
 
             BigNum n = BigNum(0);
             n.inner = tmp;
 
-            auto itn = find(n.inner.begin(), n.inner.end(), -69) - n.inner.begin();
+            auto itn = it1 + (r != 0) + 1;
             for (int i = 0; i < it2 - j; i++) n.inner[itn + i] = 0;
             ret = ret + n;
         }
