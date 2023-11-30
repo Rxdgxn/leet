@@ -4,10 +4,13 @@
 class BigNum {
 public:
     vector<short> inner;
+    int len;
 
     BigNum(int x) {
         inner = vector<short>(50001, -69);
-        int digits = floor(log10(x));
+
+        int digits = (x == 0 ? 0 : floor(log10(x)));
+        len = digits + 1;
         
         while (digits >= 0) {
             inner[digits--] = x % 10;
@@ -25,13 +28,14 @@ public:
     }
 
     BigNum operator+(BigNum& other) {
-        auto it1 = find(inner.begin(), inner.end(), -69) - inner.begin() - 1;
-        auto it2 = find(other.inner.begin(), other.inner.end(), -69) - other.inner.begin() - 1;
+        int it1 = len - 1;
+        int it2 = other.len - 1;
 
         int off = abs(it1 - it2), ok = 0;
         if (it1 < it2) {
             swap(inner, other.inner);
             swap(it1, it2);
+            swap(len, other.len);
             ok = 1;
         }
 
@@ -54,8 +58,12 @@ public:
 
         auto ret = BigNum(0);
         ret.inner = sum;
+        ret.len = len + (r != 0);
 
-        if (ok) swap(inner, other.inner);
+        if (ok) {
+            swap(inner, other.inner);
+            swap(len, other.len);
+        }
 
         return ret;
     }
@@ -63,13 +71,14 @@ public:
     BigNum operator*(BigNum& other) {
         if (inner[0] == 0 || other.inner[0] == 0) return BigNum(0);
 
-        auto it1 = find(inner.begin(), inner.end(), -69) - inner.begin() - 1;
-        auto it2 = find(other.inner.begin(), other.inner.end(), -69) - other.inner.begin() - 1;
+        int it1 = len - 1;
+        int it2 = other.len - 1;
 
         int ok = 0;
         if (it1 < it2) {
             swap(inner, other.inner);
             swap(it1, it2);
+            swap(len, other.len);
             ok = 1;
         }
 
@@ -93,13 +102,18 @@ public:
 
             BigNum n = BigNum(0);
             n.inner = tmp;
+            n.len = len + (r != 0);
 
-            auto itn = it1 + (r != 0) + 1;
-            for (int i = 0; i < it2 - j; i++) n.inner[itn + i] = 0;
+            for (int i = 0; i < it2 - j; i++) n.inner[n.len + i] = 0;
+            n.len += (it2 - j);
+
             ret = ret + n;
         }
 
-        if (ok) swap(inner, other.inner);
+        if (ok) {
+            swap(inner, other.inner);
+            swap(len, other.len);
+        }
 
         return ret;
     }
