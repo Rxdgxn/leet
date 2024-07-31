@@ -18,8 +18,6 @@ public:
     unordered_map<int, pair<int, int>> ancestors;
     unordered_map<int, vector<pair<int, char>>> tree;
 
-    string join;
-
     void dfs(TreeNode* root, int prev, int level) {
         if (root == nullptr) return;
 
@@ -33,7 +31,7 @@ public:
     }
 
     string getDirections(TreeNode* root, int startValue, int destValue) {
-        string ret, tmp;
+        string ret;
 
         dfs(root, 0, 0);
 
