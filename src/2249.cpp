@@ -22,6 +22,9 @@ public:
                         points.insert({cx + i, cy - j});
                         points.insert({cx - i, cy - j});
                     }
+                    else {
+                        break;
+                    }
                 }
             }
         }
