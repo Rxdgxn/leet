@@ -6,12 +6,13 @@ public:
     int visit_time = 0;
 
     int dfs(int node, int parent, const vector<bool>& hasApple) {
-        visit_time++;
         int apples = hasApple[node];
 
         for (int child : graph[node]) {
             if (child == parent)
                 continue;
+
+            visit_time++;
 
             int child_apples = dfs(child, node, hasApple);
             apples += child_apples;
@@ -33,6 +34,6 @@ public:
 
         dfs(0, -1, hasApple);
 
-        return visit_time - 1;
+        return visit_time;
     }
 };
