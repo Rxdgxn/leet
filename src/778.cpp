@@ -20,6 +20,9 @@ public:
             pq.pop();
             int time = top[0], i = top[1], j = top[2];
 
+            if (i == n - 1 && j == n - 1)
+                break;
+
             if (visited[i][j])
                 continue;
 
