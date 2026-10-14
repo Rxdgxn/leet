@@ -11,6 +11,11 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <cassert>
+#include <thread>
+#include <functional>
+#include <mutex>
+#include <semaphore>
+#include <barrier>
 using namespace std;
 
 #define sort_v(v) sort((v).begin(), (v).end())
